@@ -17,9 +17,28 @@ public class GestionLibros {
         //Menu
         listado(libros);
         mostrarUnLibro(libros);
+        crearNuevoLibro(libros);
 
 
 
+
+    }
+
+    private static void crearNuevoLibro(ArrayList<Libro> libros) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduce el titulo del libro ");
+        String titulo = teclado.nextLine();
+        System.out.println("Introduce el autor del libro ");
+        String autor = teclado.nextLine();
+        System.out.println("Introduce el editorial del libro ");
+        String editorial = teclado.nextLine();
+        System.out.println("Introduce el numero de paginas del titulo ");
+        int nPaginas = teclado.nextInt();
+        System.out.println("Introduce la edicion del libro ");
+        int edicion = teclado.nextInt();
+
+        Libro nuevoLibro= new Libro(titulo,autor,editorial,nPaginas,edicion);
+        libros.add(nuevoLibro);
 
     }
 
