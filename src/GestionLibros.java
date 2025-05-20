@@ -16,18 +16,66 @@ public class GestionLibros {
 
         //Menu
         listado(libros);
-        mostrarUnLibro(libros);
+       // mostrarUnLibro(libros);
         crearNuevoLibro(libros);
+        listado(libros);
+       // modificarEdicion(libros);
+        borrarLibro(libros);
+        listado(libros);
+
 
 
 
 
     }
 
+    private static void borrarLibro(ArrayList<Libro> libros) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduce el titulo del libro buscado ");
+        String tituloBuscado= teclado.nextLine();
+        //Creamos un libro solo con el titulo, para hacer la busqueda
+        Libro libroBuscado =new Libro(tituloBuscado);
+
+        if(libros.contains(libroBuscado)){ //Si está en la lista
+            libros.remove(libroBuscado);
+            System.out.println("El libro ha sido eliminado");
+        }else{//Si no está en la lista
+            System.out.println("NO ESTA");
+        }
+    }
+
+    private static void modificarEdicion(ArrayList<Libro> libros) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduce el titulo del libro buscado ");
+        String tituloBuscado= teclado.nextLine();
+        //Creamos un libro solo con el titulo, para hacer la busqueda
+        Libro libroBuscado =new Libro(tituloBuscado);
+
+        if(libros.contains(libroBuscado)){ //Si está en la lista
+            int posicion=libros.indexOf(libroBuscado); //Obtenemos su posicion
+            Libro libroEncontrado = libros.get(posicion); //Cogemos el libro de la lista
+
+            System.out.println("Introduce la nueva edicion");
+            int nuevaEdicion = teclado.nextInt();
+            libroEncontrado.setEdicion(nuevaEdicion);
+            System.out.println("El libro ha quedado así, despues del cambio");
+            System.out.println(libroEncontrado);
+
+        }else{//Si no está en la lista
+            System.out.println("NO ESTA");
+        }
+    }
+
     private static void crearNuevoLibro(ArrayList<Libro> libros) {
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Introduce el titulo del libro ");
-        String titulo = teclado.nextLine();
+        Libro libroAuxiliar =null;
+        String titulo=null;
+        do {
+            System.out.println("Introduce el titulo del libro ");
+            titulo = teclado.nextLine();
+            //Controlamos si el titulo ya está en la lista
+            libroAuxiliar = new Libro(titulo);
+        }while(libros.contains(libroAuxiliar));
         System.out.println("Introduce el autor del libro ");
         String autor = teclado.nextLine();
         System.out.println("Introduce el editorial del libro ");
@@ -39,7 +87,6 @@ public class GestionLibros {
 
         Libro nuevoLibro= new Libro(titulo,autor,editorial,nPaginas,edicion);
         libros.add(nuevoLibro);
-
     }
 
     private static void mostrarUnLibro(ArrayList<Libro> libros) {
