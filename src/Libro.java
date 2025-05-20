@@ -24,6 +24,10 @@ public class Libro {
 
     //Getter y Setters
 
+    public void setEdicion(int edicion) {
+        this.edicion = edicion;
+    }
+
 
     // Metodos
 
