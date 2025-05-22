@@ -14,19 +14,38 @@ public class GestionLibros {
 
         System.out.println(libros.get(0).equals(libros.get(1)));
 
-        //Menu
-        listado(libros);
-       // mostrarUnLibro(libros);
-        crearNuevoLibro(libros);
-        listado(libros);
-       // modificarEdicion(libros);
-        borrarLibro(libros);
-        listado(libros);
+        Scanner teclado = new Scanner(System.in);
+        int opcion=0;
+        do {
+            mostrarMenu();
+            System.out.println("Introduce opcion :");
+            opcion= teclado.nextInt();
+            switch (opcion) {
+                case 1: crearNuevoLibro(libros);break;
+                case 2: listado(libros); break;
+                case 3: mostrarUnLibro(libros);break;
+                case 4: modificarEdicion(libros);break;
+                case 5: borrarLibro(libros);break;
+                case 6:
+                    System.out.println("Cerrando aplicacion");break;
+                default:
+                    System.out.println("Opcion incorrecta");
+            }
+
+        }while(opcion !=6);
 
 
+    }
 
+    private static void mostrarMenu() {
 
-
+        System.out.println("************* MENU ************");
+        System.out.println("1- Crear nuevo libro");
+        System.out.println("2- Mostrar todos los libros");
+        System.out.println("3- Buscar un libro");
+        System.out.println("4- Modificar edicion");
+        System.out.println("5- Eliminar libro");
+        System.out.println("6- Salir");
     }
 
     private static void borrarLibro(ArrayList<Libro> libros) {
